@@ -80,3 +80,15 @@
 body {
   background: linear-gradient(to bottom, #f8fbff, #ffffff);
 }
+
+/* Mobile Fix */
+@media (max-width: 991px) {
+  .hirex-navbar {
+    padding: 10px 15px;
+  }
+
+  .hirex-login,
+  .hirex-recruiter {
+    width: 100%;
+  }
+}

@@ -261,11 +261,11 @@ const handleApply = (id) => {
                         )}
 
                         {/* ===== JOB CARDS ===== */}
-                        <div onClick={handleApply} style={{ cursor: "pointer" }} className="row g-4">
+                        <div  className="row g-4">
                             {paginatedJobs.length > 0 ? (
                                 paginatedJobs.map(job => (
 
-                                    <div className="col-md-6 col-xl-4" key={job._id}>
+                                    <div  onClick={() => handleApply(job._id)}  style={{ cursor: "pointer" }} className="col-md-6 col-xl-4" key={job._id}>
                                         <div className="card job-card h-100">
 
                                             <div className="card-body">

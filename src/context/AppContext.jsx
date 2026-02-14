@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { jobsData } from "../assets/assets";
 
 export const AppContext = createContext();
 
@@ -10,13 +11,21 @@ export const AppContextProvider = ({ children }) => {
     location: ""
   });
 
+  const [jobs,setJob]= useState(false)
   // search triggered or not
   const [isSearched, setIsSearched] = useState(false);
 
   // sidebar filters
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
-
+  
+  // function to fetch job
+  const fetchJobs = async () => {
+    setJob(jobsData)
+  }
+   useEffect(()=>{
+     fetchJobs()
+   },[])
   const value = {
     searchFilter,
     setSearchFilter,
@@ -25,7 +34,7 @@ export const AppContextProvider = ({ children }) => {
     categoryFilter,
     setCategoryFilter,
     locationFilter,
-    setLocationFilter,
+    setLocationFilter,jobs,setJob
   };
 
   return (

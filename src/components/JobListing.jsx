@@ -9,7 +9,7 @@ const JobListing = () => {
         categoryFilter,
         setCategoryFilter,
         locationFilter,
-        setLocationFilter,
+        setLocationFilter, jobs
     } = useContext(AppContext);
 
     /* ================= FILTER LOGIC ================= */
@@ -30,13 +30,17 @@ const JobListing = () => {
         );
     };
 
-    const filteredJobs = jobsData.filter((job) => {
 
+    const filteredJobs = (jobs || []).filter((job) => {
         const matchTitle =
-            job.title.toLowerCase().includes(searchFilter.title.toLowerCase());
+            job.title
+                .toLowerCase()
+                .includes(searchFilter.title.toLowerCase());
 
         const matchLocation =
-            job.location.toLowerCase().includes(searchFilter.location.toLowerCase());
+            job.location
+                .toLowerCase()
+                .includes(searchFilter.location.toLowerCase());
 
         const matchCategory =
             categoryFilter.length === 0 ||
@@ -46,7 +50,12 @@ const JobListing = () => {
             locationFilter.length === 0 ||
             locationFilter.includes(job.location);
 
-        return matchTitle && matchLocation && matchCategory && matchSidebarLocation;
+        return (
+            matchTitle &&
+            matchLocation &&
+            matchCategory &&
+            matchSidebarLocation
+        );
     });
 
     /* ================= UI ================= */
@@ -116,22 +125,29 @@ const JobListing = () => {
                                                 <i className="bi bi-geo-alt me-1"></i>
                                                 {job.location}
                                             </p>
+                                            {/* Level Badge */}
+                                            <span className="badge bg-danger-subtle text-danger">
+                                                {job.level}
+                                            </span>
 
                                             <span className="badge bg-primary-subtle text-primary">
                                                 {job.category}
                                             </span>
 
-                                           
-                                           <div className="small mt-3 text-secondary" dangerouslySetInnerHTML={{ __html: job.description .slice(0, 80)}} />
+
+                                            <div className="small mt-3 text-secondary" dangerouslySetInnerHTML={{ __html: job.description.slice(0, 80) }} />
                                         </div>
 
+
                                         <div className="card-footer bg-transparent border-0">
-                                            <button className="btn btn-primary w-50">
-                                                Learn More
-                                            </button>
-                                            <button className="btn btn-primary w-50">
-                                                Apply Now
-                                            </button>
+                                            <div className="d-flex gap-2">
+                                                <button className="btn btn-outline-primary w-50">
+                                                    Learn More
+                                                </button>
+                                                <button className="btn btn-primary w-50">
+                                                    Apply Now
+                                                </button>
+                                            </div>
                                         </div>
 
                                     </div>

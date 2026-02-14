@@ -544,11 +544,62 @@ body {
   margin-left: 4px;
 }
 
-/* ===== PAGINATION BUTTONS ===== */
-.job-listing-section .btn-outline-primary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* ===== FIX PAGINATION CLICK ISSUE ===== */
+
+.pagination-wrapper {
+  position: relative;
+  z-index: 20;   /* bring above other sections */
+  padding-bottom: 20px;
 }
+
+.page-btn {
+  position: relative;
+  z-index: 21;
+}
+.app-download-section {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+}
+
+/* ===== PAGINATION PREMIUM ===== */
+
+.pagination-wrapper {
+  text-align: center;
+}
+
+.page-btn {
+  border: none;
+  min-width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #f1f3f5;
+  color: #495057;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.page-btn:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+/* Active Page */
+.page-btn.active {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(99,102,241,0.35);
+}
+
+/* Mobile friendly */
+@media (max-width: 576px) {
+  .page-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}
+
 /* ===============================
    APP DOWNLOAD PREMIUM SECTION
 ================================= */

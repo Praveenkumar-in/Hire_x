@@ -80,6 +80,8 @@ const JobListing = () => {
   /* ================= ACTIVE FILTER COUNT ================= */
   const activeFilterCount = categoryFilter.length + locationFilter.length;
 
+ 
+
   /* ================= UI ================= */
   return (
     <div className="job-listing-section">
@@ -154,6 +156,7 @@ const JobListing = () => {
                     {loc} <i className="bi bi-x" onClick={() => removeLocationChip(loc)}></i>
                   </span>
                 ))}
+                
               </div>
             )}
 

@@ -1,3 +1,35 @@
+/* ===== HireX Global Fonts ===== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #1f2937;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Job titles premium look */
+.job-card .card-title {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Sidebar titles */
+.job-sidebar h5 {
+  font-weight: 600;
+}
+
+
 /* ===== NAVBAR STYLE ===== */
 
 .hirex-navbar {

@@ -61,6 +61,9 @@ const JobListing = () => {
     /* ================= UI ================= */
 
     return (
+        <div className="job-listing-section">
+  <div className="container my-5">
+
         <div className="container my-5">
             <div className="row">
 
@@ -166,6 +169,9 @@ const JobListing = () => {
 
             </div>
         </div>
+          </div>
+</div>
+
     );
 };
 

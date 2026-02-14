@@ -15,10 +15,7 @@ const Navbar = () => {
         <a className="navbar-brand " href="#">
            <img src={assets.logo} alt="HireX" className="hirex-logo" />
          </a>
-         {/* {
-          user?<div></div>:
-          
-         } */}
+        
         {/* MOBILE TOGGLE BUTTON */}
         <button
           className="navbar-toggler"

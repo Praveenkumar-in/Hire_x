@@ -1052,9 +1052,7 @@ body {
   transform:translateY(-4px);
   transition:.3s;
 }
-.apply-box{
-  position:sticky;
-}
+
 .job-description{
   max-width: 750px;
 }
@@ -1104,3 +1102,28 @@ body {
   border:1px solid rgba(255,255,255,0.5);
 }
 
+/* MORE JOBS SIDEBAR */
+
+.more-job-item{
+  padding:10px;
+  border-radius:10px;
+  transition:.25s;
+}
+
+.more-job-item:hover{
+  background:#f1f5f9;
+  transform:translateX(5px);
+}
+
+/* FIX SIDEBAR STICKY BEHAVIOR */
+
+.apply-box{
+  
+  top: 100px;   /* distance from navbar */
+  z-index: 10;
+}
+
+/* prevent overlap */
+.col-lg-4{
+  align-self: flex-start;
+}

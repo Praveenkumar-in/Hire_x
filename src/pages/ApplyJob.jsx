@@ -1,5 +1,6 @@
+
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { jobsData } from "../assets/assets";
 
 const ApplyJob = () => {
@@ -7,9 +8,15 @@ const ApplyJob = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // find current job
   const job = jobsData.find(
     (item) => item._id.toString() === id
   );
+
+  // recommended jobs (exclude current)
+  const moreJobs = jobsData
+    .filter((item) => item._id.toString() !== id)
+    .slice(0, 3);
 
   if (!job) {
     return (
@@ -74,6 +81,7 @@ const ApplyJob = () => {
           {/* LEFT CONTENT */}
           <div className="col-lg-8">
 
+            {/* DESCRIPTION */}
             <div className="apply-card p-4 mb-4">
               <h5 className="section-title">
                 Job Description
@@ -87,7 +95,7 @@ const ApplyJob = () => {
               />
             </div>
 
-            {/* COMPANY SECTION */}
+            {/* COMPANY */}
             <div className="apply-card p-4">
               <h5 className="section-title">
                 About Company
@@ -104,12 +112,12 @@ const ApplyJob = () => {
                   <h6 className="mb-0">
                     {job.companyId.name}
                   </h6>
+
                   <small className="text-muted">
                     Innovative company building modern solutions.
                   </small>
                 </div>
               </div>
-
             </div>
 
           </div>
@@ -117,7 +125,8 @@ const ApplyJob = () => {
           {/* RIGHT SIDEBAR */}
           <div className="col-lg-4">
 
-            <div className="apply-box sticky-top">
+            {/* APPLY BOX */}
+            <div className="apply-box  mb-4">
 
               <h5 className="mb-3">
                 Apply for this job
@@ -137,6 +146,38 @@ const ApplyJob = () => {
               <button className="btn btn-outline-secondary w-100">
                 Save Job
               </button>
+
+            </div>
+
+            {/* ===== MORE JOBS ===== */}
+            <div className="apply-card p-4">
+
+              <h5 className="mb-3">More Jobs</h5>
+
+              {moreJobs.map((item) => (
+                <Link
+                  to={`/apply-job/${item._id}`}
+                  key={item._id}
+                  className="more-job-item d-flex gap-3 align-items-center text-decoration-none"
+                >
+                  <img
+                    src={item.companyId.image}
+                    width="45"
+                    className="rounded"
+                    alt=""
+                  />
+
+                  <div>
+                    <h6 className="mb-1 text-dark">
+                      {item.title}
+                    </h6>
+
+                    <small className="text-muted">
+                      {item.companyId.name}
+                    </small>
+                  </div>
+                </Link>
+              ))}
 
             </div>
 

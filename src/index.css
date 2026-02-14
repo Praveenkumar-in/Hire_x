@@ -897,3 +897,52 @@ body {
     transform: translateX(-50%);
   }
 }
+/* APPLY PAGE */
+
+.apply-job-header {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.apply-job-content {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.apply-box {
+  background: white;
+  border-radius: 14px;
+  position: sticky;
+  top: 90px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+/* description styling */
+
+.job-description p {
+  color: #555;
+  line-height: 1.7;
+}
+
+.job-description h2 {
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.job-description ol {
+  padding-left: 18px;
+}
+
+.job-description li {
+  margin-bottom: 8px;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .apply-box {
+    position: static;
+    margin-top: 20px;
+  }
+}

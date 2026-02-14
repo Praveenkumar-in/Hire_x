@@ -1,8 +1,11 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import {useClerk ,UserButton, useUser } from '@clerk/clerk-react'
 
 const Navbar = () => {
-
+  
+  const {openSignIn} = useClerk()
+  const {user}=useUser()
 
   return (
     <nav className="navbar navbar-expand-lg hirex-navbar">
@@ -12,6 +15,10 @@ const Navbar = () => {
         <a className="navbar-brand " href="#">
            <img src={assets.logo} alt="HireX" className="hirex-logo" />
          </a>
+         {/* {
+          user?<div></div>:
+          
+         } */}
         {/* MOBILE TOGGLE BUTTON */}
         <button
           className="navbar-toggler"
@@ -27,8 +34,7 @@ const Navbar = () => {
 
           {/* Right side buttons */}
           <div className="ms-auto d-flex gap-2 mt-3 mt-lg-0">
-
-            <button className="btn hirex-login">
+             <button onClick={ e => openSignIn()} className="btn hirex-login">
               <i className="bi bi-box-arrow-in-right me-2"></i>
               Login
             </button>

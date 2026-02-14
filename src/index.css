@@ -345,10 +345,32 @@ body {
 /* ================= joblistcomponent ================= */
 /* ================= SIDEBAR ================= */
 
+
+
+/* Sidebar Fix Scroll */
 .job-sidebar {
+  position: sticky;
+  top: 90px;
   background: #ffffff;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  height: fit-content;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.job-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.job-sidebar li {
+  padding: 8px 0;
+  cursor: pointer;
+  color: #555;
+}
+
+.job-sidebar li:hover {
+  color: #0d6efd;
 }
 
 /* ================= JOB CARD ================= */

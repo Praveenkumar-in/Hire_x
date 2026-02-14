@@ -1,6 +1,23 @@
-import React from "react";
+import { useContext, useRef } from "react";
+import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
+
+
 const Hero = () => {
+    const { setSearchFilter, setIsSearched } = useContext(AppContext);
+
+    const titleRef = useRef(null);
+    const locationRef = useRef(null);
+    const onSearch = () => {
+        setSearchFilter({
+            title: titleRef.current.value,
+            location: locationRef.current.value,
+        });
+
+        setIsSearched(true);
+    };
+
+
     return (
         <section className="hirex-hero d-flex align-items-center">
             <div className="container text-center">
@@ -21,6 +38,7 @@ const Hero = () => {
                     <div className="search-field">
                         <i className="bi bi-search"></i>
                         <input
+                            ref={titleRef}
                             type="text"
                             placeholder="Job title, keyword or company"
                         />
@@ -30,13 +48,14 @@ const Hero = () => {
                     <div className="search-field">
                         <i className="bi bi-geo-alt"></i>
                         <input
+                            ref={locationRef}
                             type="text"
                             placeholder="Location"
                         />
                     </div>
 
                     {/* Search Button */}
-                    <button className="btn hirex-search-btn">
+                    <button onClick={onSearch} className="btn hirex-search-btn">
                         <i className="bi bi-arrow-right-circle me-2"></i>
                         Search
                     </button>

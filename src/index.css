@@ -341,3 +341,40 @@ body {
 .trusted-heading span {
   white-space: nowrap;
 }
+
+/* ================= joblistcomponent ================= */
+/* ================= SIDEBAR ================= */
+
+.job-sidebar {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* ================= JOB CARD ================= */
+
+.job-card {
+  border: none;
+  border-radius: 14px;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+}
+
+/* Animation */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

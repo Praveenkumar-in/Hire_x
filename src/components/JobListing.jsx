@@ -125,14 +125,16 @@ const JobListing = () => {
                                                 <i className="bi bi-geo-alt me-1"></i>
                                                 {job.location}
                                             </p>
-                                            {/* Level Badge */}
-                                            <span className="badge bg-danger-subtle text-danger">
-                                                {job.level}
-                                            </span>
+                                            {/* Level + Category Badges */}
+                                            <div className="d-flex gap-2 mt-2 flex-wrap">
+                                                <span className="badge bg-danger-subtle text-danger">
+                                                    {job.level}
+                                                </span>
 
-                                            <span className="badge bg-primary-subtle text-primary">
-                                                {job.category}
-                                            </span>
+                                                <span className="badge bg-primary-subtle text-primary">
+                                                    {job.category}
+                                                </span>
+                                            </div>
 
 
                                             <div className="small mt-3 text-secondary" dangerouslySetInnerHTML={{ __html: job.description.slice(0, 80) }} />

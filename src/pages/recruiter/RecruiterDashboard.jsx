@@ -1,4 +1,21 @@
-import React from "react";
+  {/* APPLICANTS
+        <div className="applicant-section">
+          <h2>Recent Applicants</h2>
+
+          {applicants.map((user, index) => (
+            <div key={index} className="applicant-card">
+              <div>
+                <h4>{user.name}</h4>
+                <p>{user.role}</p>
+              </div>
+
+              <div className="score">
+                {user.score}
+              </div>
+            </div>
+          ))}
+        </div> */}
+import React , { useState } from "react";
 import { Link } from "react-router-dom";
 
 const RecruiterDashboard = () => {
@@ -8,12 +25,16 @@ const RecruiterDashboard = () => {
     { title: "UI/UX Designer", applicants: 28, status: "Active" },
     { title: "Backend Engineer", applicants: 60, status: "Closed" },
   ];
-
-  const applicants = [
-    { name: "Rahul Sharma", role: "Full Stack Developer", score: "82%" },
-    { name: "Ananya Singh", role: "UI Designer", score: "91%" },
-    { name: "Vikram Patel", role: "Backend Developer", score: "76%" },
-  ];
+const [applicants, setApplicants] = useState([
+  { name: "Rahul Sharma", role: "Full Stack Developer", score: "82%", status: "Review" },
+  { name: "Ananya Singh", role: "UI Designer", score: "91%", status: "Review" },
+  { name: "Vikram Patel", role: "Backend Developer", score: "76%", status: "Review" },
+]);
+const updateStatus = (index, newStatus) => {
+  const updated = [...applicants];
+  updated[index].status = newStatus;
+  setApplicants(updated);
+};
 
   return (
     <div className="dashboard-wrapper">
@@ -70,23 +91,71 @@ const RecruiterDashboard = () => {
           ))}
         </div>
 
+      
         {/* APPLICANTS */}
-        <div className="applicant-section">
-          <h2>Recent Applicants</h2>
+<div className="applicant-section">
+  <h2>Recent Applicants</h2>
 
-          {applicants.map((user, index) => (
-            <div key={index} className="applicant-card">
-              <div>
-                <h4>{user.name}</h4>
-                <p>{user.role}</p>
-              </div>
+  {applicants.map((user, index) => (
+    <div key={index} className="applicant-card">
 
-              <div className="score">
-                {user.score}
-              </div>
-            </div>
-          ))}
+      <div>
+        <h4>{user.name}</h4>
+        <p>{user.role}</p>
+      </div>
+
+      <div className="d-flex align-items-center gap-3">
+
+        {/* SCORE */}
+        <div className="score">
+          {user.score}
         </div>
+
+        {/* STATUS DROPDOWN */}
+        <div className="dropdown">
+          <button
+            className={`status-btn ${user.status.toLowerCase()}`}
+            data-bs-toggle="dropdown"
+          >
+            {user.status} <i className="bi bi-chevron-down ms-1"></i>
+          </button>
+
+          <ul className="dropdown-menu dropdown-menu-end">
+            <li>
+              <button
+                className="dropdown-item text-success"
+                onClick={() => updateStatus(index, "Accepted")}
+              >
+                ✅ Accept
+              </button>
+            </li>
+
+            <li>
+              <button
+                className="dropdown-item text-danger"
+                onClick={() => updateStatus(index, "Rejected")}
+              >
+                ❌ Reject
+              </button>
+            </li>
+
+            <li>
+              <button
+                className="dropdown-item"
+                onClick={() => updateStatus(index, "Review")}
+              >
+                ⏳ Review
+              </button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  ))}
+</div>
+
 
       </div>
 

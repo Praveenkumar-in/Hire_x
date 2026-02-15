@@ -1802,3 +1802,35 @@ body {
     position:static;
   }
 }
+/* STATUS BUTTON */
+.status-btn{
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+/* REVIEW */
+.status-btn.review{
+  background:#f1f5f9;
+  color:#475569;
+}
+
+/* ACCEPTED */
+.status-btn.accepted{
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+/* REJECTED */
+.status-btn.rejected{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.status-btn:hover{
+  transform:translateY(-1px);
+}

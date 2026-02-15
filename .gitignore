@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-node_modules
-.env
-=======
+
 # Logs
 logs
 *.log
@@ -29,4 +26,4 @@ dist-ssr
 # Environment / secrets
 .env
 .env.*
->>>>>>> c53cc0cf7c7b7e812c47601cc7bcd12e73dc3b23
+

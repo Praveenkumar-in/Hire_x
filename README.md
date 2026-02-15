@@ -1,0 +1,2 @@
+### License
+This project is licensed under the MIT License © 2026 Praveen Kumar

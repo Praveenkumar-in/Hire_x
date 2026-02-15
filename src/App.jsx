@@ -5,6 +5,10 @@ import Home from './pages/Home'
 import ApplyJob from './pages/ApplyJob'
 import Applications from './pages/Applications'
 import MainLayout from './Layout/MainLayout'
+import RecruiterLogin from "./pages/recruiter/RecuriterLogin";
+import RecruiterDashboard from "./pages/recruiter/RecruiterDashboard";
+import RecruiterPostJob from './pages/recruiter/PostJob'
+
 
 const App = () => {
   return (
@@ -17,6 +21,12 @@ const App = () => {
     <Route path = '/apply-job/:id' element ={ <ApplyJob/>}/>
     <Route path = '/applications' element ={ <Applications/>}/>
     </Route>
+
+     {/* RECRUITER SIDE */}
+  <Route path="/recruiter/login" element={<RecruiterLogin />} />
+  <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
+   <Route path="/post/job" element={<RecruiterPostJob />} />
+  
   </Routes>
 
     </div>

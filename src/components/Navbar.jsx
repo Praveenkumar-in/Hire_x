@@ -3,6 +3,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
 
   // Clerk hooks
@@ -59,10 +60,11 @@ const Navbar = () => {
                   Login
                 </button>
 
-                {/* Recruiter Button */}
-                <button className="btn hirex-recruiter">
+ <Link to ="/recruiter/login"> <button className="btn hirex-recruiter">
                   I'm Recruiter
-                </button>
+                </button></Link>  
+               
+
               </>
             )}
 

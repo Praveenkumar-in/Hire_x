@@ -1127,3 +1127,162 @@ body {
 .col-lg-4{
   align-self: flex-start;
 }
+/* =============================
+   APPLICATION PAGE BG
+============================= */
+
+.application-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(99,102,241,.15), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(37,99,235,.12), transparent 40%),
+    #f1f5f9;
+}
+
+/* HERO */
+.application-hero{
+  padding:60px 0;
+  background:linear-gradient(135deg,#4f46e5,#2563eb);
+  color:white;
+}
+
+/* =============================
+   STAT CARDS
+============================= */
+
+.stat-card{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.07);
+  transition:.3s;
+}
+
+.stat-card:hover{
+  transform:translateY(-6px);
+}
+
+.stat-card small{
+  color:#64748b;
+}
+
+.stat-card h3{
+  font-weight:700;
+}
+
+.stat-icon{
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  background:#eef2ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#4f46e5;
+}
+
+/* =============================
+   RESUME CARD
+============================= */
+
+.resume-card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 15px 35px rgba(0,0,0,.06);
+}
+
+.upload-area{
+  border:2px dashed #cbd5e1;
+  border-radius:14px;
+  padding:35px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  background:#f8fafc;
+}
+
+.upload-area:hover{
+  background:#eef2ff;
+  border-color:#4f46e5;
+}
+
+.upload-area i{
+  font-size:36px;
+  color:#4f46e5;
+}
+
+/* =============================
+   APPLICATION TABLE
+============================= */
+
+.applications-card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 15px 35px rgba(0,0,0,.06);
+}
+
+.application-table thead{
+  background:#f8fafc;
+}
+
+.application-table tbody tr{
+  transition:.25s;
+}
+
+.application-table tbody tr:hover{
+  background:#f1f5f9;
+}
+
+/* COMPANY CELL */
+
+.company-cell{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.company-logo{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  object-fit:contain;
+  background:white;
+  padding:6px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+/* =============================
+   STATUS BADGES
+============================= */
+
+.status{
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.status.pending{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.status.accepted{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.status.rejected{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+/* MOBILE */
+@media(max-width:992px){
+  .application-hero{
+    text-align:center;
+  }
+}

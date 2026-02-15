@@ -108,7 +108,7 @@ export const jobsApplied = [
         location: 'Bangalore',
         date: '22 Aug, 2024',
         status: 'Pending',
-        logo: company_icon,
+        logo:  amazon_logo,
     },
     {
         company: 'Meta',
@@ -140,7 +140,7 @@ export const jobsApplied = [
         location: 'Hyderabad',
         date: '25 Sep, 2024',
         status: 'Accepted',
-        logo: company_icon,
+        logo: microsoft_logo,
     },
 ];
 

@@ -139,9 +139,10 @@ const ApplyJob = () => {
                 <li><strong>Salary:</strong> ${job.salary}</li>
               </ul>
 
-              <button className="btn apply-btn w-100 mb-3">
+             <Link to ='/applications '> <button className="btn apply-btn w-100 mb-3">
                 Apply Now
               </button>
+              </Link>
 
               <button className="btn btn-outline-secondary w-100">
                 Save Job

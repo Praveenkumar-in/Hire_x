@@ -97,6 +97,11 @@ app.use("/api", chatRoutes);
 app.get("/", (req, res) => {
   res.send("🚀 HireX Backend Running");
 });
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 /* ERROR HANDLER */
 app.use((err, req, res, next) => {

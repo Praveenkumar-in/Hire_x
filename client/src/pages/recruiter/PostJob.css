@@ -1,0 +1,163 @@
+/* ================= BACKGROUND ================= */
+
+.postjob-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ================= CARD ================= */
+
+.postjob-card {
+  width: 100%;
+  max-width: 950px;
+  padding: 45px;
+  border-radius: 25px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  backdrop-filter: blur(25px);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.postjob-card h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 35px;
+  letter-spacing: 1px;
+}
+
+/* ================= GRID ================= */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+/* ================= PREMIUM INPUT STYLE ================= */
+
+.postjob-card input,
+.postjob-card select,
+.postjob-card textarea {
+
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+
+  background: linear-gradient(145deg, #1e2a38, #16222f);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  color: #f1f1f1;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+
+  transition: 0.3s ease;
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.5),
+              inset -2px -2px 6px rgba(255,255,255,0.02);
+}
+
+/* placeholder color */
+.postjob-card input::placeholder,
+.postjob-card textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* focus effect */
+.postjob-card input:focus,
+.postjob-card select:focus,
+.postjob-card textarea:focus {
+  border: 1px solid #00c6ff;
+  box-shadow: 0 0 8px #00c6ff55,
+              inset 2px 2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* textarea size */
+textarea {
+  min-height: 120px;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+/* ================= REQUIREMENTS ================= */
+
+.requirements-section h4 {
+  margin-bottom: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.requirements-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* gradient chips */
+.req-chip {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  padding: 6px 14px;
+  border-radius: 25px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,114,255,0.4);
+  transition: 0.3s ease;
+}
+
+.req-chip:hover {
+  transform: scale(1.05);
+}
+
+.req-chip button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ================= PREMIUM BUTTON ================= */
+
+.publish-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: white;
+
+  background: linear-gradient(90deg, #ff512f, #dd2476);
+  box-shadow: 0 10px 30px rgba(221,36,118,0.4);
+
+  transition: 0.3s ease;
+}
+
+.publish-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(221,36,118,0.6);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .postjob-card {
+    padding: 25px;
+  }
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

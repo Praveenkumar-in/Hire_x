@@ -5,18 +5,36 @@ const router = express.Router();
 const {
   applyJob,
   getApplications,
+  myApplications,
+  updateApplicationStatus,
 } = require('../controllers/applicationController');
-
 const { protect } = require('../middleware/authmiddleware');
 const { uploadResume } = require('../middleware/uploadMiddleware');
 
-router.get('/', protect, getApplications);
+/* ================================
+   CANDIDATE (CLERK USER)
+================================ */
 
+// ✅ Apply job (NO JWT)
 router.post(
   '/',
-  protect,
   uploadResume.single('resume'),
   applyJob
+);
+
+// ✅ Candidate dashboard
+router.get(
+  '/my/:clerkUserId',
+  myApplications
+);
+
+
+
+// ✅ Accept / Reject
+router.patch(
+  '/:id/status',
+  protect,
+  updateApplicationStatus
 );
 
 module.exports = router;

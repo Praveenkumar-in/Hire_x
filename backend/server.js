@@ -21,7 +21,7 @@ const webhookRoutes = require("./routes/webhookRoutes");
 /* ================= APP ================= */
 const app = express();
 app.use(
-  "/api/webhooks/clerk",
+  "/api/webhooks",
   express.raw({ type: "application/json" }),
   webhookRoutes
 );

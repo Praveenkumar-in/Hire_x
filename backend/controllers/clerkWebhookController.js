@@ -3,9 +3,9 @@ const ClerkUser = require("../Models/ClerkUser");
 
 const clerkWebhook = async (req, res) => {
   try {
-
+      console.log("clerk works start",res)
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
-
+console.log(CLERK_WEBHOOK_SECRET)
     if (!WEBHOOK_SECRET) {
       throw new Error("Missing Clerk Webhook Secret");
     }

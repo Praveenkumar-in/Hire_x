@@ -1,55 +1,83 @@
+
+
 const { Webhook } = require("svix");
 const ClerkUser = require("../Models/ClerkUser");
 
 const clerkWebhook = async (req, res) => {
   try {
+
+    /* ================= WEBHOOK SECRET ================= */
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
     if (!WEBHOOK_SECRET) {
-      throw new Error("Webhook secret missing");
+      throw new Error("CLERK_WEBHOOK_SECRET not found in env");
     }
 
+    /* ================= HEADERS ================= */
+    const svix_id = req.headers["svix-id"];
+    const svix_timestamp = req.headers["svix-timestamp"];
+    const svix_signature = req.headers["svix-signature"];
+
+    if (!svix_id || !svix_timestamp || !svix_signature) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing svix headers"
+      });
+    }
+
+    /* ================= VERIFY WEBHOOK ================= */
     const payload = req.body;
-    const headers = req.headers;
 
     const wh = new Webhook(WEBHOOK_SECRET);
 
-    const evt = wh.verify(JSON.stringify(payload), {
-      "svix-id": headers["svix-id"],
-      "svix-timestamp": headers["svix-timestamp"],
-      "svix-signature": headers["svix-signature"],
+    const evt = wh.verify(payload, {
+      "svix-id": svix_id,
+      "svix-timestamp": svix_timestamp,
+      "svix-signature": svix_signature
     });
 
     const eventType = evt.type;
     const data = evt.data;
 
-    // ================= USER CREATED =================
+    console.log("📩 Clerk Event:", eventType);
+
+    /* ================= USER CREATED ================= */
     if (eventType === "user.created") {
 
       await ClerkUser.create({
         clerkId: data.id,
         email: data.email_addresses[0].email_address,
         name: `${data.first_name || ""} ${data.last_name || ""}`,
-        imageUrl: data.image_url,
+        imageUrl: data.image_url
       });
 
-      console.log("✅ Clerk user saved");
+      console.log("✅ Clerk user saved in MongoDB");
     }
 
-    // ================= USER DELETED =================
+    /* ================= USER DELETED ================= */
     if (eventType === "user.deleted") {
+
       await ClerkUser.findOneAndDelete({
-        clerkId: data.id,
+        clerkId: data.id
       });
 
-      console.log("🗑 User removed");
+      console.log("🗑 Clerk user deleted from MongoDB");
     }
 
-    res.status(200).json({ success: true });
+    /* ================= RESPONSE ================= */
+    res.status(200).json({
+      success: true
+    });
 
   } catch (error) {
-    console.log("Webhook error:", error.message);
-    res.status(400).json({ success: false });
+
+    console.error("❌ Clerk Webhook Error:", error.message);
+
+    res.status(400).json({
+      success: false,
+      error: error.message
+    });
+
   }
 };
 

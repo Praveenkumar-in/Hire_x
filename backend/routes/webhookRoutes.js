@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { clerkWebhook } = require("../controllers/clerkWebhookController");
 
-router.post("/clerk", express.raw({ type: "application/json" }), clerkWebhook);
+router.post("/clerk", clerkWebhook);
 
 module.exports = router;

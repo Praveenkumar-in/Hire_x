@@ -7,17 +7,9 @@ const clerkUserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    email: {
-      type: String,
-      required: true,
-    },
+    email: String,
     name: String,
     imageUrl: String,
-    role: {
-      type: String,
-      enum: ["candidate", "recruiter", "admin"],
-      default: "candidate",
-    },
   },
   { timestamps: true }
 );

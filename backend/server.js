@@ -18,13 +18,16 @@ const notificationRoutes = require("./routes/notificationRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const webhookRoutes = require("./routes/webhookRoutes");
+const clerkWebhookRoutes = require("./routes/clerkWebhook");
 /* ================= APP ================= */
 const app = express();
 app.use(
-  "/api/webhook",
+  "/api/webhooks",
   express.raw({ type: "application/json" }),
   webhookRoutes
+  
 );
+app.use("/api/webhook", clerkWebhookRoutes);
 /* ================= CORS ================= */
 app.use(
   cors({
@@ -35,7 +38,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use("/api/clerk", clerkWebhookRoutes);
 /* ================= BODY PARSER ================= */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

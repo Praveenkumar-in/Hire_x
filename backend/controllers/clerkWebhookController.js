@@ -1,22 +1,20 @@
-
-
 const { Webhook } = require("svix");
 const ClerkUser = require("../Models/ClerkUser");
 
 const clerkWebhook = async (req, res) => {
   try {
 
-    /* ================= WEBHOOK SECRET ================= */
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
     if (!WEBHOOK_SECRET) {
-      throw new Error("CLERK_WEBHOOK_SECRET not found in env");
+      throw new Error("Missing Clerk Webhook Secret");
     }
 
-    /* ================= HEADERS ================= */
-    const svix_id = req.headers["svix-id"];
-    const svix_timestamp = req.headers["svix-timestamp"];
-    const svix_signature = req.headers["svix-signature"];
+    const headers = req.headers;
+
+    const svix_id = headers["svix-id"];
+    const svix_timestamp = headers["svix-timestamp"];
+    const svix_signature = headers["svix-signature"];
 
     if (!svix_id || !svix_timestamp || !svix_signature) {
       return res.status(400).json({
@@ -25,59 +23,53 @@ const clerkWebhook = async (req, res) => {
       });
     }
 
-    /* ================= VERIFY WEBHOOK ================= */
-    const payload = req.body;
+    const payload = req.body; // raw buffer
 
     const wh = new Webhook(WEBHOOK_SECRET);
 
-    const evt = wh.verify(payload, {
+    const evt = wh.verify(payload.toString(), {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
-      "svix-signature": svix_signature
+      "svix-signature": svix_signature,
     });
 
-    const eventType = evt.type;
-    const data = evt.data;
+    const { type, data } = evt;
 
-    console.log("📩 Clerk Event:", eventType);
+    console.log("Clerk event:", type);
 
-    /* ================= USER CREATED ================= */
-    if (eventType === "user.created") {
+    // USER CREATED
+    if (type === "user.created") {
 
       await ClerkUser.create({
         clerkId: data.id,
         email: data.email_addresses[0].email_address,
         name: `${data.first_name || ""} ${data.last_name || ""}`,
-        imageUrl: data.image_url
+        imageUrl: data.image_url,
       });
 
-      console.log("✅ Clerk user saved in MongoDB");
+      console.log("User saved in MongoDB");
     }
 
-    /* ================= USER DELETED ================= */
-    if (eventType === "user.deleted") {
+    // USER DELETED
+    if (type === "user.deleted") {
 
       await ClerkUser.findOneAndDelete({
-        clerkId: data.id
+        clerkId: data.id,
       });
 
-      console.log("🗑 Clerk user deleted from MongoDB");
+      console.log("User removed from DB");
     }
 
-    /* ================= RESPONSE ================= */
-    res.status(200).json({
-      success: true
-    });
+    return res.status(200).json({ success: true });
 
   } catch (error) {
 
-    console.error("❌ Clerk Webhook Error:", error.message);
+    console.log("Webhook error:", error.message);
 
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       error: error.message
     });
-
   }
 };
 

@@ -1,30 +1,35 @@
+
+
 const express = require("express");
 const router = express.Router();
 const { Webhook } = require("svix");
+const User = require("../Models/ClerkUser");
 
-const ClerkUser = require("../Models/ClerkUser");
-
-/* ================= CLERK WEBHOOK ================= */
-
+/*
+   POST /api/webhooks/clerk
+*/
 router.post(
   "/clerk",
   express.raw({ type: "application/json" }),
   async (req, res) => {
     try {
+      /* ================= SECRET CHECK ================= */
+
       const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
       if (!WEBHOOK_SECRET) {
+        console.log("❌ Missing webhook secret");
         return res.status(500).json({
           success: false,
-          message: "Webhook secret missing",
+          message: "Webhook secret not configured",
         });
       }
 
-      const headers = req.headers;
+      /* ================= HEADERS ================= */
 
-      const svix_id = headers["svix-id"];
-      const svix_timestamp = headers["svix-timestamp"];
-      const svix_signature = headers["svix-signature"];
+      const svix_id = req.headers["svix-id"];
+      const svix_timestamp = req.headers["svix-timestamp"];
+      const svix_signature = req.headers["svix-signature"];
 
       if (!svix_id || !svix_timestamp || !svix_signature) {
         return res.status(400).json({
@@ -33,45 +38,68 @@ router.post(
         });
       }
 
+      /* ================= VERIFY WEBHOOK ================= */
+
+      const payload = req.body.toString();
+
       const wh = new Webhook(WEBHOOK_SECRET);
 
-      // Verify webhook
-      const evt = wh.verify(req.body, {
+      const event = await wh.verify(payload, {
         "svix-id": svix_id,
         "svix-timestamp": svix_timestamp,
         "svix-signature": svix_signature,
       });
 
-      const eventType = evt.type;
-      const data = evt.data;
+      console.log("✅ Webhook verified:", event.type);
 
-      console.log("✅ Clerk Event:", eventType);
+      /* ================= HANDLE EVENTS ================= */
 
-      /* ========= USER CREATED ========= */
-      if (eventType === "user.created") {
-        await ClerkUser.create({
-          clerkId: data.id,
-          email: data.email_addresses[0]?.email_address,
-          name: `${data.first_name || ""} ${data.last_name || ""}`,
-          imageUrl: data.image_url,
-        });
+      switch (event.type) {
+        case "user.created": {
+          const { id, email_addresses, first_name, last_name } =
+            event.data;
 
-        console.log("✅ User saved to MongoDB");
+          await User.findOneAndUpdate(
+            { clerkId: id },
+            {
+              clerkId: id,
+              name: `${first_name || ""} ${last_name || ""}`,
+              email: email_addresses[0].email_address,
+            },
+            { upsert: true, new: true }
+          );
+
+          console.log("✅ User saved in MongoDB");
+          break;
+        }
+
+        case "user.deleted": {
+          const { id } = event.data;
+
+          await User.findOneAndDelete({ clerkId: id });
+
+          console.log("🗑 User deleted");
+          break;
+        }
+
+        default:
+          console.log("ℹ️ Event ignored:", event.type);
       }
 
-      /* ========= USER DELETED ========= */
-      if (eventType === "user.deleted") {
-        await ClerkUser.findOneAndDelete({
-          clerkId: data.id,
-        });
+      /* ================= SUCCESS RESPONSE ================= */
 
-        console.log("🗑 User removed");
-      }
+      return res.status(200).json({
+        success: true,
+        message: "Webhook processed",
+      });
 
-      res.status(200).json({ success: true });
-    } catch (err) {
-      console.error("Webhook Error:", err.message);
-      res.status(400).json({ success: false });
+    } catch (error) {
+      console.error("❌ Webhook Error:", error.message);
+
+      return res.status(400).json({
+        success: false,
+        message: "Webhook verification failed",
+      });
     }
   }
 );

@@ -33,7 +33,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // local
-      "https://hirex-app.vercel.app/" // 🔥 change later to your frontend URL
+      "https://hirex-app.vercel.app" // 🔥 change later to your frontend URL
     ],
     credentials: true,
   })

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer-modern mt-5">
@@ -68,9 +68,9 @@ const Footer = () => {
               <button className="store-btn">
                 <i className="bi bi-google-play"></i>
               </button>
-              <button className="store-btn">
+              <Link to ="/admin/login" className="store-btn">
                 <i className="bi bi-apple"></i>
-              </button>
+              </Link>
             </div>
           </div>
 

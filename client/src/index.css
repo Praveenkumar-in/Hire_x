@@ -2692,3 +2692,21 @@ background:rgba(255,255,255,0.25);
   }
 
 }
+.store-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:45px;
+  height:45px;
+  border-radius:8px;
+  background:#1f2937;
+  color:white;
+  margin-right:10px;
+  font-size:20px;
+  transition:0.3s;
+}
+
+.store-btn:hover{
+  background:#2563eb;
+  transform:translateY(-3px);
+}

@@ -42,7 +42,7 @@ const AdminLogin = () => {
 
       toast.success("Admin Login Successful 🚀");
 
-      navigate("/admin/dashboard");
+      navigate("/admin/applications");
 
     } catch (err) {
 

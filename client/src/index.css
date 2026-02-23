@@ -36,6 +36,59 @@ body {
   font-weight: 600;
 }
 
+/* MOBILE FILTER BUTTON */
+
+.mobile-filter-btn {
+  background: #f3f4f6;
+  border: 1px solid #ddd;
+  font-weight: 600;
+}
+
+/* ARROW ROTATION */
+
+.filter-arrow {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* FILTER SIDEBAR */
+
+.mobile-filter-close {
+  display: none;
+}
+
+.mobile-filter-open {
+  display: block;
+}
+
+/* DESKTOP ALWAYS SHOW FILTER */
+
+@media (min-width: 992px) {
+
+  .mobile-filter-close,
+  .mobile-filter-open {
+    display: block !important;
+  }
+
+}
+
+/* PAGINATION */
+
+.page-btn {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+}
+
+.page-btn.active {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
 
 /* ===== NAVBAR STYLE ===== */
 

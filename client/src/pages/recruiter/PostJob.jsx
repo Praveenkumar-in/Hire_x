@@ -186,7 +186,7 @@ const PostJob = () => {
             options={[
               { value: "Beginner Level", label: "Beginner Level" },
               { value: "Intermediate Level", label: "Intermediate Level" },
-              { value: "Expert Level", label: "Expert Level" }
+              { value: "Senior Level", label: "Senior Level" }
             ]}
             placeholder="Select Level"
             onChange={(selected) =>

@@ -140,7 +140,7 @@ const handleApply = (id) => {
       
         
 
-    /* ================= UI ================= */
+    /* ================= d-lg-block UI ================= */
 
     return (
         <div className="job-listing-section">
@@ -169,6 +169,7 @@ const handleApply = (id) => {
 
                     {/* ===== SIDEBAR ===== */}
                     <div className={`col-lg-3 mb-4 ${showFilters ? "mobile-filter-open" : "mobile-filter-close"} d-lg-block`}>
+                    {/* <div className={`col-lg-3 mb-4 filter-sidebar ${showFilters ? "open" : ""}`}> */}
                         <div className="job-sidebar p-3">
 
                             {/* HEADER */}

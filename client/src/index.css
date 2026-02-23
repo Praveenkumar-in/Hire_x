@@ -2515,3 +2515,180 @@ transition:0.3s;
 .back-btn:hover{
 background:rgba(255,255,255,0.25);
 }
+.admin-login-wrapper{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  position:relative;
+  overflow:hidden;
+}
+
+/* floating shapes */
+
+.admin-bg span{
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  animation:float 10s infinite;
+}
+
+.admin-bg span:nth-child(1){
+  top:10%;
+  left:20%;
+}
+
+.admin-bg span:nth-child(2){
+  top:70%;
+  left:10%;
+}
+
+.admin-bg span:nth-child(3){
+  top:20%;
+  right:15%;
+}
+
+.admin-bg span:nth-child(4){
+  bottom:10%;
+  right:25%;
+}
+
+@keyframes float{
+
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-40px)}
+  100%{transform:translateY(0)}
+
+}
+
+/* card */
+
+.admin-login-card{
+
+  width:380px;
+
+  padding:40px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+
+  text-align:center;
+
+  color:white;
+
+  animation:fadeIn 0.8s ease;
+
+}
+
+.admin-login-card h2{
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.admin-subtitle{
+  font-size:14px;
+  margin-bottom:30px;
+  opacity:0.8;
+}
+
+/* inputs */
+
+.admin-input-group{
+  position:relative;
+  margin-bottom:25px;
+}
+
+.admin-input-group input{
+
+  width:100%;
+  padding:12px;
+
+  border:none;
+  border-radius:8px;
+
+  outline:none;
+
+  background:rgba(255,255,255,0.15);
+
+  color:white;
+}
+
+.admin-input-group label{
+
+  position:absolute;
+
+  left:12px;
+
+  top:12px;
+
+  font-size:14px;
+
+  transition:0.3s;
+
+  pointer-events:none;
+}
+
+.admin-input-group input:focus + label,
+.admin-input-group input:valid + label{
+
+  top:-8px;
+  font-size:11px;
+  background:#2c5364;
+  padding:0 5px;
+
+}
+
+/* button */
+
+.admin-login-btn{
+
+  width:100%;
+
+  padding:12px;
+
+  border:none;
+
+  border-radius:8px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  background:linear-gradient(135deg,#6a11cb,#2575fc);
+
+  color:white;
+
+  transition:0.3s;
+
+}
+
+.admin-login-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:0 10px 20px rgba(0,0,0,0.3);
+
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}

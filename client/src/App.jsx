@@ -12,6 +12,7 @@ import RecruiterAuth  from './pages/recruiter/RecruiterAuth'
 import AIChat from "./components/AIChat";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminLogin from  "./pages/recruiter/AdminLogin"
 
 const App = () => {
   return (
@@ -36,7 +37,7 @@ const App = () => {
   <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
    <Route path="/post/job" element={<RecruiterPostJob />} />
    
-    
+    <Route path="/admin/login" element={<AdminLogin />} />
   </Routes>
  <AIChat />
     </div>

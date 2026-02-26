@@ -143,6 +143,22 @@ width:100%;
 overflow-x:auto;
 }
 
+@media (max-width:768px){
+
+.admin-applications{
+padding:20px;
+}
+
+.admin-title{
+font-size:22px;
+}
+
+.admin-card{
+padding:18px;
+}
+
+}
+
 /* make table minimum width so columns stay readable */
 
 .admin-table{

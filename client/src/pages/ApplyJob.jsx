@@ -323,9 +323,7 @@ const ApplyJob = () => {
 
               <div
                 className="job-description"
-                dangerouslySetInnerHTML={{
-                  __html: job.description
-                }}
+                
               />
 
             </div>

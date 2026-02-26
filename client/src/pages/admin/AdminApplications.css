@@ -136,3 +136,15 @@ text-align:center;
 padding:100px;
 font-size:20px;
 }
+/* TABLE WRAPPER FOR MOBILE */
+
+.admin-table-wrapper{
+width:100%;
+overflow-x:auto;
+}
+
+/* make table minimum width so columns stay readable */
+
+.admin-table{
+min-width:700px;
+}

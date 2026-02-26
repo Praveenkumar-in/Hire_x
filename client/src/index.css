@@ -3148,3 +3148,32 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
+
+.hirex-notifications::-webkit-scrollbar{
+  width:5px;
+}
+
+.hirex-notifications::-webkit-scrollbar-thumb{
+  background:#ccc;
+  border-radius:10px;
+}
+@media (max-width:480px){
+
+.hirex-notifications{
+
+position:fixed;
+
+top:70px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:92%;
+max-width:360px;
+
+right:auto;
+
+}
+
+}

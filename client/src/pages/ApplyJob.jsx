@@ -211,14 +211,14 @@ const ApplyJob = () => {
 
         // get single job
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/jobs/${id}`
+          `${import.meta.env.VITE_API_URL}/jobs/${id}`
         );
 
         setJob(res.data);
 
         // get other jobs
         const jobsRes = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/jobs`
+          `${import.meta.env.VITE_API_URL}/jobs`
         );
 
         const filtered = jobsRes.data

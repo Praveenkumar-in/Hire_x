@@ -83,59 +83,9 @@
 
 // export default Notifications;
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useUser } from "@clerk/clerk-react";
+import React from "react";
 
-
-   const Notifications = ({ notifications }) => {
-
-  const { user } = useUser();
-  const [notifications, setNotifications] = useState([]);
-
-  useEffect(() => {
-
-    const fetchNotifications = async () => {
-
-      try {
-
-        const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/notifications/${user.id}`
-        );
-
-        setNotifications(res.data);
-
-      } catch (error) {
-        console.error(error);
-      }
-
-    };
-
-    if (user) fetchNotifications();
-
-  }, [user]);
-
-  const markAsRead = async (id) => {
-
-    try {
-
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/notifications/${id}/read`
-      );
-
-      setNotifications((prev) =>
-        prev.map((n) =>
-          n._id === id ? { ...n, isRead: true } : n
-        )
-      );
-
-    } catch (error) {
-      console.error(error);
-    }
-
-  };
-
-
+const Notifications = ({ notifications }) => {
 
   return (
 

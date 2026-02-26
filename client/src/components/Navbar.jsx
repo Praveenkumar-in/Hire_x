@@ -110,7 +110,7 @@ const Navbar = () => {
         const res = await axios.get(
           `${import.meta.env.VITE_API_URL}/notifications/${user.id}`
         );
-
+console.log(res)
         setNotifications(res.data);
 
       } catch (err) {

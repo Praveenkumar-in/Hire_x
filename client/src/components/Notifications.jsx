@@ -87,7 +87,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 
-const Notifications = () => {
+
+   const Notifications = ({ notifications }) => {
 
   const { user } = useUser();
   const [notifications, setNotifications] = useState([]);
@@ -134,6 +135,8 @@ const Notifications = () => {
 
   };
 
+
+
   return (
 
     <div className="hirex-notifications">
@@ -153,16 +156,15 @@ const Notifications = () => {
         <div
           key={n._id}
           className={`notification-card ${n.isRead ? "read" : "unread"}`}
-          onClick={() => markAsRead(n._id)}
         >
 
           <p className="notification-message">
             {n.message}
           </p>
 
-          <span className="notification-time">
+          <small className="notification-time">
             {new Date(n.createdAt).toLocaleString()}
-          </span>
+          </small>
 
         </div>
 

@@ -86,7 +86,8 @@
 
 // export default Navbar;'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { assets } from "../assets/assets";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
@@ -95,24 +96,47 @@ import Notifications from "./Notifications";
 const Navbar = () => {
 
   const { openSignIn } = useClerk();
-  const { isSignedIn } = useUser();
+  const { isSignedIn, user } = useUser();
 
   const [showNotifications, setShowNotifications] = useState(false);
-  const [count, setCount] = useState(3); // example unread count
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+
+    const fetchNotifications = async () => {
+
+      try {
+
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/notifications/${user.id}`
+        );
+
+        setNotifications(res.data);
+
+      } catch (err) {
+        console.log(err);
+      }
+
+    };
+
+    if (user) fetchNotifications();
+
+  }, [user]);
+
+  // count unread notifications
+  const unreadCount = notifications.filter(n => !n.isRead).length;
 
   return (
     <nav className="navbar navbar-expand-lg hirex-navbar">
 
-      <div className="container-fluid px-3">
+      <div className="container-fluid">
 
-        {/* LOGO */}
         <Link className="navbar-brand" to="/">
           <img src={assets.logo} alt="HireX" className="hirex-logo"/>
         </Link>
 
         <div className="ms-auto d-flex align-items-center gap-3">
 
-          {/* 🔔 Notification Bell */}
           {isSignedIn && (
 
             <div className="notification-bell">
@@ -122,19 +146,20 @@ const Navbar = () => {
                 onClick={() => setShowNotifications(!showNotifications)}
               ></i>
 
-              {count > 0 && (
+              {unreadCount > 0 && (
                 <span className="notification-count">
-                  {count}
+                  {unreadCount}
                 </span>
               )}
 
-              {showNotifications && <Notifications/>}
+              {showNotifications && (
+                <Notifications notifications={notifications}/>
+              )}
 
             </div>
 
           )}
 
-          {/* USER */}
           {isSignedIn && (
             <UserButton afterSignOutUrl="/" />
           )}

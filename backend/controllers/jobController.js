@@ -67,7 +67,7 @@ const deleteJob = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-// ================= GET SINGLE JOB =================
+// ================= GET SINGLE JOBid =================
 const getJobById = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);

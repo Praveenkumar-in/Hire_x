@@ -533,7 +533,7 @@ console.log("job",res)
 
                 <div className="row">
 
-                    {/* SIDEBAR */}
+                    {/* SIDEBARl */}
 
                     <div className={`col-lg-3 mb-4 ${showFilters ? "mobile-filter-open" : "mobile-filter-close"} d-lg-block`}>
 

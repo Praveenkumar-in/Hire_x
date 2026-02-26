@@ -2710,3 +2710,18 @@ background:rgba(255,255,255,0.25);
   background:#2563eb;
   transform:translateY(-3px);
 }
+
+.job-requirements li {
+  margin-bottom:8px;
+  list-style:none;
+  position:relative;
+  padding-left:22px;
+}
+
+.job-requirements li::before{
+  content:"✔";
+  position:absolute;
+  left:0;
+  color:#2563eb;
+  font-weight:bold;
+}

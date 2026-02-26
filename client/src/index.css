@@ -3022,3 +3022,45 @@ padding:20px;
 }
 
 }
+.notification-wrapper{
+position:relative;
+}
+
+.notification-btn{
+background:#f3f6ff;
+border:none;
+font-size:18px;
+padding:8px 12px;
+border-radius:10px;
+}
+
+.notifications-box{
+position:absolute;
+top:45px;
+right:0;
+width:320px;
+background:white;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+padding:15px;
+z-index:1000;
+}
+
+.notification-item{
+padding:10px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.notification-item.unread{
+background:#f5f8ff;
+font-weight:600;
+}
+
+.notification-item.read{
+color:#777;
+}
+
+.notification-item:hover{
+background:#f0f0f0;
+}

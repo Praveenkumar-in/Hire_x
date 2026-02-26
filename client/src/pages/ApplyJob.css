@@ -1,0 +1,298 @@
+/* ================= PAGE BACKGROUND ================= */
+
+.applyjob-page{
+min-height:100vh;
+padding-bottom:80px;
+
+background: linear-gradient(
+135deg,
+#0f172a 0%,
+#020617 50%,
+#0f172a 100%
+);
+
+position:relative;
+overflow:hidden;
+color:white;
+}
+
+/* background glow */
+
+.applyjob-page::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+
+background: radial-gradient(circle,rgba(59,130,246,0.25),transparent 70%);
+
+top:-150px;
+left:-150px;
+
+filter:blur(120px);
+z-index:0;
+}
+
+.applyjob-page::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+
+background: radial-gradient(circle,rgba(99,102,241,0.25),transparent 70%);
+
+bottom:-150px;
+right:-150px;
+
+filter:blur(120px);
+z-index:0;
+}
+
+/* container above background */
+
+.applyjob-page .container{
+position:relative;
+z-index:2;
+max-width:1200px;
+}
+
+/* ================= HERO ================= */
+
+.applyjob-hero{
+margin-bottom:40px;
+}
+
+.applyjob-company-logo{
+width:60px;
+height:60px;
+object-fit:contain;
+background:white;
+padding:8px;
+border-radius:10px;
+}
+
+/* ================= CARD ================= */
+
+.applyjob-card{
+background: rgba(15,23,42,0.7);
+
+border-radius:16px;
+
+padding:28px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
+
+backdrop-filter: blur(20px);
+
+transition:0.3s;
+}
+
+.applyjob-card:hover{
+transform: translateY(-6px);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+}
+
+/* ================= TITLES ================= */
+
+.applyjob-section-title{
+font-size:20px;
+font-weight:700;
+margin-bottom:15px;
+color:white;
+
+position:relative;
+padding-left:14px;
+}
+
+.applyjob-section-title::before{
+content:"";
+position:absolute;
+
+left:0;
+top:4px;
+
+height:18px;
+width:4px;
+
+background:linear-gradient(180deg,#3b82f6,#6366f1);
+
+border-radius:4px;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.applyjob-description{
+line-height:1.7;
+color:#cbd5f5;
+font-size:15px;
+}
+
+/* ================= REQUIREMENTS ================= */
+
+.applyjob-requirements{
+padding-left:0;
+margin-top:10px;
+}
+
+.applyjob-requirements li{
+list-style:none;
+
+margin-bottom:10px;
+
+padding-left:24px;
+
+position:relative;
+
+color:#cbd5f5;
+font-size:14px;
+}
+
+.applyjob-requirements li::before{
+content:"✔";
+
+position:absolute;
+left:0;
+
+color:#3b82f6;
+font-weight:bold;
+}
+
+/* ================= ABOUT COMPANY ================= */
+
+.applyjob-company-logo-small{
+width:50px;
+height:50px;
+object-fit:contain;
+background:white;
+padding:6px;
+border-radius:8px;
+}
+
+/* ================= APPLY BOX ================= */
+
+.applyjob-box{
+background: rgba(15,23,42,0.8);
+
+border-radius:16px;
+
+padding:25px;
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* ================= META ================= */
+
+.applyjob-meta{
+list-style:none;
+padding-left:0;
+margin-bottom:20px;
+}
+
+.applyjob-meta li{
+margin-bottom:8px;
+color:#cbd5f5;
+font-size:14px;
+}
+
+/* ================= BUTTONS ================= */
+
+.applyjob-btn{
+background:linear-gradient(135deg,#3b82f6,#6366f1);
+
+border:none;
+
+color:white;
+
+font-weight:600;
+
+padding:10px;
+
+border-radius:8px;
+
+transition:0.3s;
+}
+
+.applyjob-btn:hover{
+transform:translateY(-2px);
+
+box-shadow:0 10px 30px rgba(59,130,246,0.5);
+}
+
+/* save button */
+
+.applyjob-save-btn{
+border:1px solid rgba(255,255,255,0.2);
+
+color:white;
+
+border-radius:8px;
+
+transition:0.3s;
+}
+
+.applyjob-save-btn:hover{
+background:rgba(255,255,255,0.08);
+}
+
+/* ================= TAGS ================= */
+
+.applyjob-tag{
+background:rgba(59,130,246,0.2);
+
+color:#60a5fa;
+
+font-size:12px;
+
+padding:4px 10px;
+
+border-radius:6px;
+
+font-weight:600;
+}
+
+/* ================= MORE JOBS ================= */
+
+.applyjob-more-item{
+padding:10px;
+border-radius:10px;
+
+transition:0.3s;
+}
+
+.applyjob-more-item:hover{
+background:rgba(255,255,255,0.05);
+transform:translateX(5px);
+}
+
+/* more job logo */
+
+.applyjob-more-logo{
+width:45px;
+height:45px;
+background:white;
+padding:5px;
+border-radius:8px;
+object-fit:contain;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:768px){
+
+.applyjob-page{
+padding:20px;
+}
+
+.applyjob-card{
+padding:20px;
+}
+
+.applyjob-box{
+padding:20px;
+}
+
+}

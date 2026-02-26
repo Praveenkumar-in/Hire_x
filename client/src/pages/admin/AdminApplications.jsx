@@ -49,8 +49,8 @@ const AdminApplications = () => {
     </h2>
 
     <div className="admin-card">
-
-      <table className="admin-table-wrapper">
+<div className="admin-tale-wrapper">
+      <table className="admin-table">
 
         <thead>
           <tr>
@@ -106,6 +106,7 @@ const AdminApplications = () => {
         </tbody>
 
       </table>
+      </div>
 
     </div>
 

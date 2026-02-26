@@ -1,192 +1,159 @@
+/* MAIN PAGE */
 
 .admin-applications{
   padding:40px;
   min-height:100vh;
-
   background: radial-gradient(circle at top,#1e293b,#020617);
 }
-/* title */
+
+/* TITLE */
 
 .admin-title{
-font-size:28px;
-font-weight:700;
-margin-bottom:25px;
-color:#a2acb9;
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:25px;
+  color:#a2acb9;
 }
 
-/* card container */
+/* CARD */
 
 .admin-card{
-background:Srgb(21, 19, 19);
-padding:25px;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  background:#151313;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* table */
-/* 
-.admin-table{
-width:100%;
-border-collapse:collapse;
+/* TABLE WRAPPER (SCROLL FIX) */
+
+.admin-table-wrapper{
+  width:100%;
+  overflow-x:auto;
 }
+
+/* TABLE */
+
+.admin-table{
+  width:100%;
+  min-width:700px;
+  border-collapse:collapse;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* TABLE HEADER */
 
 .admin-table thead{
-background:#2563eb;
-color:white;
+  background:#2563eb;
+  color:white;
 }
 
 .admin-table th{
-padding:14px;
-text-align:left;
-font-size:14px;
+  padding:14px;
+  text-align:left;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,0.2);
 }
+
+/* TABLE BODY */
 
 .admin-table td{
-padding:14px;
-border-bottom:1px solid #706666;
-font-size:14px;
-} */
-
-/* hover */
-/* 
-.admin-table tr:hover{
-background:#18191a;
-} */
-
-.admin-table{
-width:100%;
-border-collapse:collapse;
-border:1px solid rgba(255,255,255,0.1);
+  padding:14px;
+  border-bottom:1px solid rgba(255,255,255,0.15);
+  font-size:14px;
+  color:#e5e7eb;
 }
 
-.admin-table thead{
-background:#2563eb;
-color:white;
-}
-
-.admin-table th{
-padding:14px;
-text-align:left;
-font-size:14px;
-border-bottom:1px solid rgba(255,255,255,0.2);
-}
-
-.admin-table td{
-padding:14px;
-border-bottom:1px solid rgba(255,255,255,0.15);
-font-size:14px;
-}
+/* HOVER */
 
 .admin-table tr:hover{
-background:#18191a;
+  background:#18191a;
 }
-/* ATS badge */
+
+/* ATS SCORE */
 
 .ats-score{
-background:#e0f2fe;
-color:#0369a1;
-padding:4px 10px;
-border-radius:20px;
-font-weight:600;
+  background:#e0f2fe;
+  color:#0369a1;
+  padding:4px 10px;
+  border-radius:20px;
+  font-weight:600;
+  font-size:12px;
 }
 
-/* status badges */
+/* STATUS */
 
 .status{
-padding:5px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:600;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
 }
 
 .status.Pending{
-background:#fff7ed;
-color:#c2410c;
+  background:#fff7ed;
+  color:#c2410c;
 }
 
 .status.Accepted{
-background:#dcfce7;
-color:#166534;
+  background:#dcfce7;
+  color:#166534;
 }
 
 .status.Rejected{
-background:#fee2e2;
-color:#991b1b;
+  background:#fee2e2;
+  color:#991b1b;
 }
 
-/* resume button */
+/* RESUME BUTTON */
 
 .resume-btn{
-background:#6366f1;
-color:white;
-padding:6px 14px;
-border-radius:6px;
-text-decoration:none;
-font-size:13px;
+  background:#6366f1;
+  color:white;
+  padding:6px 14px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:13px;
+  transition:0.3s;
 }
 
 .resume-btn:hover{
-background:#4f46e5;
+  background:#4f46e5;
 }
 
-/* loading */
+/* LOADING */
 
 .admin-loading{
-text-align:center;
-padding:100px;
-font-size:20px;
+  text-align:center;
+  padding:100px;
+  font-size:20px;
+  color:white;
 }
-/* TABLE WRAPPER FOR MOBILE */
 
-.admin-table{
-width:100%;
-overflow-x:auto;
+/* SCROLLBAR */
+
+.admin-table-wrapper::-webkit-scrollbar{
+  height:6px;
 }
+
+.admin-table-wrapper::-webkit-scrollbar-thumb{
+  background:#555;
+  border-radius:10px;
+}
+
+/* MOBILE */
 
 @media (max-width:768px){
 
 .admin-applications{
-padding:20px;
+  padding:20px;
 }
 
 .admin-title{
-font-size:22px;
+  font-size:22px;
 }
 
 .admin-card{
-padding:18px;
+  padding:15px;
 }
 
-}
-/* TABLE SCROLL FIX */
-
-.admin-table-wrapper{
-width:100%;
-overflow-x:auto;
-}
-
-/* prevent table from shrinking */
-
-.admin-table{
-min-width:700px;
-}
-@media (max-width:768px){
-
-.admin-applications{
-padding:20px;
-}
-
-.admin-title{
-font-size:22px;
-}
-
-.admin-card{
-padding:15px;
-}
-
-}
-/* make table minimum width so columns stay readable */
-
-.admin-table{
-min-width:700px;
 }

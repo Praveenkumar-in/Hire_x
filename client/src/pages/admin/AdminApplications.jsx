@@ -50,7 +50,7 @@ const AdminApplications = () => {
 
     <div className="admin-card">
 
-      <table className="admin-table">
+      <table className="admin-table-wrapper">
 
         <thead>
           <tr>

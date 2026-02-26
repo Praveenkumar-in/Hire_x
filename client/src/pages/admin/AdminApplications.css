@@ -158,7 +158,33 @@ padding:18px;
 }
 
 }
+/* TABLE SCROLL FIX */
 
+.admin-table-wrapper{
+width:100%;
+overflow-x:auto;
+}
+
+/* prevent table from shrinking */
+
+.admin-table{
+min-width:700px;
+}
+@media (max-width:768px){
+
+.admin-applications{
+padding:20px;
+}
+
+.admin-title{
+font-size:22px;
+}
+
+.admin-card{
+padding:15px;
+}
+
+}
 /* make table minimum width so columns stay readable */
 
 .admin-table{

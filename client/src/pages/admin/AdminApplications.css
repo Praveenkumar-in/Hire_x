@@ -139,6 +139,11 @@
   background:#555;
   border-radius:10px;
 }
+.admin-table{
+  width:100%;
+  min-width:900px;   /* forces horizontal scroll on mobile */
+  border-collapse:collapse;
+}
 
 /* MOBILE */
 

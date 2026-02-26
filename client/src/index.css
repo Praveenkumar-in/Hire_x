@@ -3025,83 +3025,72 @@ padding:20px;
 .notification-wrapper{
 position:relative;
 }
+/* NOTIFICATION BELL */
 
-.notification-btn{
-background:#f3f6ff;
-border:none;
-font-size:18px;
-padding:8px 12px;
-border-radius:10px;
-}
-
-.notifications-box{
-position:absolute;
-top:45px;
-right:0;
-width:320px;
-background:white;
-border-radius:10px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-padding:15px;
-z-index:1000;
-}
-
-.notification-item{
-padding:10px;
-border-bottom:1px solid #eee;
+.notification-bell{
+position:relative;
+font-size:20px;
 cursor:pointer;
+color:#333;
+transition:0.3s;
 }
 
-.notification-item.unread{
-background:#f5f8ff;
+.notification-bell:hover{
+color:#2563eb;
+}
+
+/* RED BADGE */
+
+.notification-count{
+position:absolute;
+top:-6px;
+right:-8px;
+background:#ff3b3b;
+color:white;
+font-size:11px;
 font-weight:600;
+padding:2px 6px;
+border-radius:50px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
 
-.notification-item.read{
-color:#777;
-}
-
-.notification-item:hover{
-background:#f0f0f0;
-}
-
-/* MAIN BOX */
+/* NOTIFICATION PANEL */
 
 .hirex-notifications{
 position:absolute;
-top:55px;
-right:10px;
-width:340px;
+top:40px;
+right:0;
+width:350px;
 max-height:420px;
 overflow-y:auto;
-background:rgba(255,255,255,0.9);
-backdrop-filter:blur(12px);
+background:linear-gradient(135deg,#ffffff,#f5f9ff);
 border-radius:14px;
-padding:15px;
-box-shadow:0 10px 35px rgba(0,0,0,0.15);
-z-index:1000;
-animation:fadeIn 0.25s ease;
+padding:16px;
+box-shadow:0 12px 40px rgba(0,0,0,0.18);
+border:1px solid rgba(0,0,0,0.05);
+z-index:999;
+animation:slideDown 0.25s ease;
 }
 
 /* TITLE */
 
 .notification-title{
+font-size:17px;
 font-weight:700;
-margin-bottom:12px;
-font-size:16px;
-border-bottom:1px solid #eee;
-padding-bottom:8px;
+margin-bottom:14px;
+color:#1f2937;
 }
 
 /* CARD */
 
 .notification-card{
-padding:12px;
+background:white;
+padding:12px 14px;
 border-radius:10px;
 margin-bottom:10px;
 cursor:pointer;
 transition:all 0.25s ease;
-border:1px solid transparent;
+border-left:4px solid transparent;
 }
 
 /* UNREAD */
@@ -3109,13 +3098,12 @@ border:1px solid transparent;
 .notification-card.unread{
 background:#eef4ff;
 border-left:4px solid #3b82f6;
-font-weight:600;
 }
 
 /* READ */
 
 .notification-card.read{
-background:#f7f7f7;
+background:#f9f9f9;
 color:#666;
 }
 
@@ -3123,16 +3111,14 @@ color:#666;
 
 .notification-card:hover{
 transform:translateY(-2px);
-box-shadow:0 6px 18px rgba(0,0,0,0.08);
-background:white;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
 }
 
 /* MESSAGE */
 
 .notification-message{
-margin:0;
 font-size:14px;
-line-height:1.4;
+margin-bottom:4px;
 }
 
 /* TIME */
@@ -3140,33 +3126,19 @@ line-height:1.4;
 .notification-time{
 font-size:12px;
 color:#888;
-margin-top:4px;
-display:block;
 }
 
 /* EMPTY */
 
 .no-notification{
 text-align:center;
-color:#888;
-font-size:14px;
-padding:15px;
-}
-
-/* SCROLLBAR */
-
-.hirex-notifications::-webkit-scrollbar{
-width:5px;
-}
-
-.hirex-notifications::-webkit-scrollbar-thumb{
-background:#d0d0d0;
-border-radius:10px;
+color:#777;
+padding:20px;
 }
 
 /* ANIMATION */
 
-@keyframes fadeIn{
+@keyframes slideDown{
 from{
 opacity:0;
 transform:translateY(-10px);

@@ -49,7 +49,7 @@ const AdminApplications = () => {
     </h2>
 
     <div className="admin-card">
-<div className="admin-tale-wrapper">
+<div className="admin-table-wrapper">
       <table className="admin-table">
 
         <thead>

@@ -146,12 +146,13 @@ HireX sends email notifications when:
 ## 👨‍💻 Author
 **Praveen Kumar**  
 
-🔗 [LinkedIn](https://linkedin.com)  
+🔗 [LinkedIn](www.linkedin.com/in/praveenkumar65)  
 🔗 [GitHub](https://github.com/Praveenkumar-in)  
 
 ---
 
 ⭐ If you like this project, **give it a star** on GitHub!
+
 
 
 

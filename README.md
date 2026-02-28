@@ -105,28 +105,33 @@ HireX sends email notifications when:
 **Powered by:** Nodemailer + Gmail SMTP  
 
 ---
+
+
 ## 📸 Screenshots
 
 ### 🏠 Landing Page
-![Landing Page](/landing.jpg)
+![Landing Page](hirex%20ss/Hirex.home.jpeg)
 
-### 📄 My Applications
-![Applications](screenshots/applications.jpg)
+### 👤 User Login
+![User Login](hirex%20ss/userlogin.png)
+
+### 📄 User Dashboard
+![User Dashboard](hirex%20ss/userDhasboard.png)
 
 ### 👨‍💼 Recruiter Login
-![Recruiter Login](screenshots/recruiter-login.jpg)
+![Recruiter Login](hirex%20ss/Recurites.login.jpeg)
 
 ### 📊 Recruiter Dashboard
-![Recruiter Dashboard](screenshots/recruiter-dashboard.jpg)
+![Recruiter Dashboard](hirex%20ss/RD.page.jpeg)
 
 ### 📝 Post New Job
-![Post Job](screenshots/post-job.jpg)
+![Post Job](hirex%20ss/job%20post.jpeg)
 
 ### 🛠 Admin Panel
-![Admin Login](screenshots/admin-login.jpg)
+![Admin Login](hirex%20ss/admin%20page.jpeg)
 
 ### 🤖 AI Career Assistant
-![AI Chat](screenshots/ai-chat.jpg)
+![AI Chat](hirex%20ss/Ai%20chat%20box.png)
 
 
 ## 🚀 Future Improvements
@@ -147,4 +152,5 @@ HireX sends email notifications when:
 ---
 
 ⭐ If you like this project, **give it a star** on GitHub!
+
 

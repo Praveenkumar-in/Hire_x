@@ -1,304 +1,4 @@
 
-// import React, { useState, useEffect } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { toast } from "react-toastify";
-
-// const API_URL = import.meta.env.VITE_API_URL;
-
-// const RecruiterDashboard = () => {
-//   const navigate = useNavigate();
-
-//   const [jobs, setJobs] = useState([]);
-//   const [applicants, setApplicants] = useState([]);
-//   const [stats, setStats] = useState({});
-//   const [loading, setLoading] = useState(true);
-
-//   // ================= DASHBOARD DATA =================
-//   useEffect(() => {
-//     const fetchDashboard = async () => {
-//       try {
-//         const token = localStorage.getItem("recruiterToken");
-
-//         if (!token) {
-//           toast.error("Session expired. Please login again.");
-//           navigate("/recruiter/login");
-//           return;
-//         }
-
-//         const res = await axios.get(
-//           `${API_URL}/recruiter/dashboard`,
-//           {
-//             headers: {
-//               Authorization: `Bearer ${token}`,
-//             },
-//           }
-//         );
-
-//         const data = res.data;
-
-//         setApplicants(data.recentApplicants || []);
-
-//         setStats({
-//           activeJobs: data.totalJobs,
-//           totalApplicants: data.totalApplications,
-//           interviews: data.accepted,
-//           aiMatchRate: data.avgAtsScore,
-//         });
-
-//       } catch (err) {
-//         console.log("Dashboard Error:", err);
-//         toast.error(
-//           err.response?.data?.message || "Failed to load dashboard"
-//         );
-//       }
-//     };
-
-//     fetchDashboard();
-//   }, [navigate]);
-
-//   // ================= FETCH JOBS =================
-//   useEffect(() => {
-//     const fetchJobs = async () => {
-//       try {
-//         const token = localStorage.getItem("recruiterToken");
-
-//         const res = await axios.get(
-//           `${API_URL}/recruiter/jobs`,
-//           {
-//             headers: {
-//               Authorization: `Bearer ${token}`,
-//             },
-//           }
-//         );
-
-//         console.log("Jobs API:", res.data);
-
-//         // API returns array directly
-//         setJobs(res.data || []);
-
-//       } catch (err) {
-//         console.log(err);
-//         toast.error("Failed to fetch jobs");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchJobs();
-//   }, []);
-
-//   // ================= UPDATE APPLICATION STATUS =================
-//   const updateStatus = async (applicationId, newStatus) => {
-//     try {
-//       const token = localStorage.getItem("recruiterToken");
-
-//       await axios.patch(
-//         `${API_URL}/applications/${applicationId}/status`,
-//         { status: newStatus },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-
-//       setApplicants((prev) =>
-//         prev.map((app) =>
-//           app._id === applicationId
-//             ? { ...app, status: newStatus }
-//             : app
-//         )
-//       );
-
-//       toast.success(`Application ${newStatus}`);
-//     } catch (err) {
-//       console.log(err.response);
-//       toast.error("Failed to update status");
-//     }
-//   };
-
-//   // ================= TOGGLE JOB STATUS =================
-//   const toggleJobStatus = async (jobId) => {
-//     try {
-//       const token = localStorage.getItem("recruiterToken");
-
-//       await axios.patch(
-//         `${API_URL}/recruiter/${jobId}/status`,
-//         {},
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-
-//       setJobs((prev) =>
-//         prev.map((job) =>
-//           job._id === jobId
-//             ? { ...job, isActive: !job.isActive }
-//             : job
-//         )
-//       );
-
-//       toast.success("Job status updated");
-
-//     } catch (err) {
-//       console.log(err.response);
-//       toast.error("Failed to update job status");
-//     }
-//   };
-
-//   if (loading) {
-//     return <div style={{ padding: "40px" }}>Loading dashboard...</div>;
-//   }
-
-//   return (
-//     <div className="dashboard-wrapper">
-
-//       {/* HEADER */}
-//       <div className="dashboard-header">
-//         <h1>Recruiter Dashboard</h1>
-
-//         <Link to="/post/job">
-//           <button className="post-job-btn">
-//             + Post New Job
-//           </button>
-//         </Link>
-//       </div>
-
-//       {/* ================= STATS ================= */}
-//       <div className="stats-grid">
-
-//         <div className="stat-card">
-//           <h3>Active Jobs</h3>
-//           <h2>{stats.activeJobs || 0}</h2>
-//         </div>
-
-//         <div className="stat-card">
-//           <h3>Total Applicants</h3>
-//           <h2>{stats.totalApplicants || 0}</h2>
-//         </div>
-
-//         <div className="stat-card">
-//           <h3>Interviews</h3>
-//           <h2>{stats.interviews || 0}</h2>
-//         </div>
-
-//         <div className="stat-card ai-card">
-//           <h3>AI Match Rate</h3>
-//           <h2>{stats.aiMatchRate || 0}%</h2>
-//           <p>Based on ATS scoring</p>
-//         </div>
-
-//       </div>
-
-//       {/* ================= MAIN GRID ================= */}
-//       <div className="dashboard-main">
-
-//         {/* JOB SECTION */}
-//         <div className="job-section">
-//           <h2>Your Job Posts</h2>
-
-//           {jobs.length === 0 && <p>No jobs posted yet.</p>}
-
-//           {jobs.map((job) => (
-//             <div key={job._id} className="job-card">
-
-//               <div>
-//                 <h4>{job.title}</h4>
-//               </div>
-
-//               <button
-//                 className={`status-btn ${job.isActive ? "active" : "inactive"}`}
-//                 onClick={() => toggleJobStatus(job._id)}
-//               >
-//                 {job.isActive ? "Active" : "Closed"}
-//               </button>
-
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* APPLICANTS */}
-//         <div className="applicant-section">
-
-//           <h2>Recent Applicants</h2>
-
-//           {applicants.length === 0 && <p>No applicants yet.</p>}
-
-//           {applicants.map((app) => (
-
-//             <div key={app._id} className="applicant-card">
-
-//               <div>
-//                 <h4>{app.applicantName}</h4>
-//                 <p>{app.job?.title}</p>
-//               </div>
-
-//               <div className="d-flex align-items-center gap-3">
-
-//                 <div className="score">
-//                   {app.atsScore || 0}
-//                 </div>
-
-//                 <div className="dropdown">
-
-//                   <button
-//                     className={`status-btn ${app.status?.toLowerCase()}`}
-//                     data-bs-toggle="dropdown"
-//                   >
-//                     {app.status}
-//                   </button>
-
-//                   <ul className="dropdown-menu dropdown-menu-end">
-
-//                     <li>
-//                       <button
-//                         className="dropdown-item text-success"
-//                         onClick={() => updateStatus(app._id, "Accepted")}
-//                       >
-//                         ✅ Accept
-//                       </button>
-//                     </li>
-
-//                     <li>
-//                       <button
-//                         className="dropdown-item text-danger"
-//                         onClick={() => updateStatus(app._id, "Rejected")}
-//                       >
-//                         ❌ Reject
-//                       </button>
-//                     </li>
-
-//                     <li>
-//                       <button
-//                         className="dropdown-item"
-//                         onClick={() => updateStatus(app._id, "Review")}
-//                       >
-//                         ⏳ Review
-//                       </button>
-//                     </li>
-
-//                   </ul>
-
-//                 </div>
-
-//               </div>
-
-//             </div>
-
-//           ))}
-
-//         </div>
-
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default RecruiterDashboard;
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -350,7 +50,7 @@ const RecruiterDashboard = () => {
         );
 
         const data = res.data;
-
+console.log(res,"res")
         setApplicants(data.recentApplicants || []);
 
         setStats({
@@ -606,97 +306,89 @@ const RecruiterDashboard = () => {
           ))}
 
         </div>
+<div className="applicant-sections">
 
+  <h2>Recent Applicants</h2>
 
-        {/* APPLICANTS */}
+  {applicants.length === 0 && <p>No applicants yet.</p>}
 
-        {/* <div className="applicant-section">
+  {applicants.map((app) => (
+    <div key={app._id} className="applicant-card">
 
-          <h2>Recent Applicants</h2>
+      {/* LEFT SIDE */}
+      <div className="applicant-info">
+        <h4>{app.applicantName}</h4>
+        <p>{app.job?.title}</p>
+      </div>
 
-          {applicants.map(app => (
+      {/* RIGHT SIDE */}
+      <div className="applicant-actions">
 
-            <div key={app._id} className="applicant-card">
+        {/* ATS SCORE */}
+        <div className="score">
+          {app.atsScore || 0}
+        </div>
 
-              <div>
-                <h4>{app.applicantName}</h4>
-                <p>{app.job?.title}</p>
-              </div>
+        {/* STATUS DROPDOWN */}
+        <div className="dropdown">
 
-              <div className="score">
-                {app.atsScore || 0}
-              </div>
+          <button
+            className={`status-btn ${app.status?.toLowerCase()}`}
+            data-bs-toggle="dropdown"
+          >
+            {app.status}
+          </button>
 
-            </div> */}
-             <div className="applicant-sections">
+          <ul className="dropdown-menu dropdown-menu-end">
 
-          <h2>Recent Applicants</h2>
+            <li>
+              <button
+                className="dropdown-item text-success"
+                onClick={() => updateStatus(app._id, "Accepted")}
+              >
+                Accept
+              </button>
+            </li>
 
-           {applicants.length === 0 && <p>No applicants yet.</p>}
+            <li>
+              <button
+                className="dropdown-item text-danger"
+                onClick={() => updateStatus(app._id, "Rejected")}
+              >
+                Reject
+              </button>
+            </li>
 
-           {applicants.map((app) => (
-            <div key={app._id} className="applicant-card">
+            <li>
+              <button
+                className="dropdown-item"
+                onClick={() => updateStatus(app._id, "Review")}
+              >
+                Review
+              </button>
+            </li>
 
-              <div>
-                <h4>{app.applicantName}</h4>
-                <p>{app.job?.title}</p>
-              </div>
-
-              <div className="d-flex align-items-center gap-3">
-
-                <div className="score">
-                  {app.atsScore || 0}
-                </div>
-
-                <div className="dropdown">
-
-                  <button
-                    className={`status-btn ${app.status?.toLowerCase()}`}
-                    data-bs-toggle="dropdown"
-                  >
-                    {app.status}
-                  </button>
-
-                  <ul className="dropdown-menu dropdown-menu-end">
-
-                    <li>
-                      <button
-                        className="dropdown-item text-success"
-                        onClick={() => updateStatus(app._id, "Accepted")}
-                      >
-                        ✅ Accept
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        className="dropdown-item text-danger"
-                        onClick={() => updateStatus(app._id, "Rejected")}
-                      >
-                        ❌ Reject
-                      </button>
-                    </li>
-
-                    <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => updateStatus(app._id, "Review")}
-                      >
-                        ⏳ Review
-                      </button>
-                    </li>
-
-                </ul>
-
-                 </div>
-
-               </div>
-
-             </div>
-
-          ))}
+          </ul>
 
         </div>
+
+        {/* RESUME BUTTON */}
+        <a
+          href={app.resumeLink}
+          target="_blank"
+          rel="noreferrer"
+          className="resume-btn"
+        >
+          View Resume
+        </a>
+
+      </div>
+
+    </div>
+  ))}
+
+</div>
+        
 
 
       </div>
@@ -708,3 +400,5 @@ const RecruiterDashboard = () => {
 };
 
 export default RecruiterDashboard;
+
+

@@ -90,24 +90,42 @@ body {
   border: none;
 }
 
-/* ===== NAVBAR STYLE ===== */
 
+
+/* NAVBAR */
+
+
+.navbar-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+ }
 .hirex-navbar {
   background: #ffffff;
-  height: 70px;
+  height: 70px; 
 
   /* Shadow line effect */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  padding: 10px 25px;
+} 
+ 
+
+.navbar-brand{
+  background:transparent !important;
+  padding:0;
 }
-
-/* ===== LOGO ===== */
-
+/* 
+.hirex-logo{
+  height:38px;
+  object-fit:contain;
+} */
+ 
 .hirex-logo {
   width: 140px;
   height: auto;
@@ -117,71 +135,71 @@ body {
 .hirex-logo:hover {
   transform: scale(1.05);
 }
+/* RIGHT SIDE */
 
-/* ===== LOGIN BUTTON ===== */
-
-.hirex-login {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  border: 1px solid #0d6efd;
-  color: #0d6efd;
-  background: transparent;
-
-  padding: 7px 18px;
-  border-radius: 10px;
-
-  font-weight: 500;
-  transition: all 0.3s ease;
+.navbar-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-/* Hover Effect */
-.hirex-login:hover {
-  background: #0d6efd;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(13,110,253,0.3);
+/* MOBILE MENU ICON */
+
+.menu-icon{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:black;
 }
 
-/* Icon animation */
-.hirex-login i {
-  transition: transform 0.3s ease;
+/* BUTTONS */
+
+.hirex-login{
+  background:#16a34a;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
 }
 
-.hirex-login:hover i {
-  transform: translateX(3px);
+.hirex-recruiter{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
 }
 
-/* ===== RECRUITER BUTTON ===== */
-
-.hirex-recruiter {
-  background: linear-gradient(135deg, #0d6efd, #4facfe);
-  color: white;
-  padding: 6px 18px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
+.hirex-admin{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
 }
 
-.hirex-recruiter:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(13,110,253,0.35);
-}
-body {
-  background: linear-gradient(to bottom, #f8fbff, #ffffff);
-}
+/* MOBILE VIEW */
 
-/* Mobile Fix */
-@media (max-width: 991px) {
-  .hirex-navbar {
-    padding: 10px 15px;
+@media(max-width:768px){
+
+  .menu-icon{
+    display:block;
   }
 
-  .hirex-login,
-  .hirex-recruiter {
-    width: 100%;
+  .navbar-right{
+    position:absolute;
+    top:65px;
+    right:0;
+    background:white;
+    width:200px;
+    flex-direction:column;
+    padding:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    display:none;
+  }
+
+  .navbar-right.active{
+    display:flex;
   }
 }
 /* ================= HERO SECTION ================= */
@@ -3176,4 +3194,42 @@ right:auto;
 
 }
 
+}
+.hirex-admin{
+background:linear-gradient(135deg,#ef4444,#dc2626);
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:8px;
+font-weight:600;
+transition:0.3s;
+}
+
+.hirex-admin:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 18px rgba(239,68,68,0.4);
+}
+.hirex-login{
+background:#10b981;
+color:white;
+border:none;
+padding:8px 18px;
+border-radius:8px;
+font-weight:600;
+transition:0.3s;
+}
+
+.hirex-login:hover{
+background:#059669;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(16,185,129,0.35);
+color:white;
+}
+
+/* REMOVE BOOTSTRAP WHITE HOVER */
+
+.hirex-login:focus,
+.hirex-login:active{
+outline:none;
+box-shadow:none;
 }
